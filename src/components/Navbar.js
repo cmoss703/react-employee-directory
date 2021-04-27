@@ -1,47 +1,32 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "./style.css";
+// import { Link } from "react-router-dom";
+// import "./style.css";
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
-function Navbar() {
+function Navbar(props) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link className="navbar-brand" to="/">
-        Pupster
-      </Link>
-      <div>
-        <ul className="navbar-nav">
-          <li className="nav-item">
-            <Link
-              to="/"
-              className={
-                window.location.pathname === "/" || window.location.pathname === "/about"
-                  ? "nav-link active"
-                  : "nav-link"
-              }
-            >
-              About
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              to="/discover"
-              className={window.location.pathname === "/discover" ? "nav-link active" : "nav-link"}
-            >
-              Discover
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              to="/search"
-              className={window.location.pathname === "/search" ? "nav-link active" : "nav-link"}
-            >
-              Search
-            </Link>
-          </li>
-        </ul>
+      <div id="navbar" className="input-group mb-3">
+        <input
+          id="employee"
+          name="employee"
+          list="employees"
+          type="text"
+          className="form-control"
+          placeholder="Search for an Employee.."
+          value={props.search}
+          onChange={props.handleInputChange}>
+        </input>
+        <datalist id="employees">
+          {props.employees.map(employee => (
+            <option value={employee} key={employee} />
+          ))}
+        </datalist>
+        <button type="submit" onClick={props.handleFormSubmit} className="btn btn-success">
+          Search
+        </button>
       </div>
-    </nav>
+    </nav >
   );
 }
 
