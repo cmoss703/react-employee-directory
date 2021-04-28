@@ -1,5 +1,7 @@
 # React Employee Directory
 
+[Deployed Application](https://cmoss703.github.io/react-employee-directory/)
+
 ## TABLE OF CONTENTS
 
 * [Description](#description)
