@@ -88,32 +88,32 @@ class Table extends Component {
                         </thead>
 
                         {this.state.results && this.state.results.map(empl =>
-                                empl.name.first.toLowerCase().includes(this.state.search) ?
+                            empl.name.first.toLowerCase().includes(this.state.search) ?
+                                <tbody key={empl.login.uuid}>
+                                    <tr>
+                                        <td ><img src={empl.picture.thumbnail} alt="avatar" /></td>
+                                        <td >{empl.name.first}</td>
+                                        <td >{empl.name.last}</td>
+                                        <td >{empl.phone}</td>
+                                        <td >{empl.email}</td>
+                                        <td>{moment(empl.dob.date).format("L")}</td>
+                                    </tr>
+                                </tbody>
+                                :
+                                empl.name.last.toLowerCase().includes(this.state.search) ?
                                     <tbody key={empl.login.uuid}>
                                         <tr>
-                                            <td ><img src={empl.picture.thumbnail} alt="avatar"/></td>
+                                            <td ><img src={empl.picture.thumbnail} alt="avatar" /></td>
                                             <td >{empl.name.first}</td>
                                             <td >{empl.name.last}</td>
-                                            <td >{empl.phone}</td>
+                                            <td >{empl.phone} </td>
                                             <td >{empl.email}</td>
                                             <td>{moment(empl.dob.date).format("L")}</td>
                                         </tr>
                                     </tbody>
                                     :
-                                    empl.name.last.toLowerCase().includes(this.state.search) ?
-                                        <tbody key={empl.login.uuid}>
-                                            <tr>
-                                                <td ><img src={empl.picture.thumbnail} alt="avatar" /></td>
-                                                <td >{empl.name.first}</td>
-                                                <td >{empl.name.last}</td>
-                                                <td >{empl.phone} </td>
-                                                <td >{empl.email}</td>
-                                                <td>{moment(empl.dob.date).format("L")}</td>
-                                            </tr>
-                                        </tbody>
-                                        :
-                                        null
-                            )}
+                                    null
+                        )}
                     </table>
                 </div>
             </div>
