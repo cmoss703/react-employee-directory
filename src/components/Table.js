@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Navbar from "./Navbar";
-import DateFormat from 'dateformat';
+import moment from 'moment';
 
 class Table extends Component {
 
@@ -11,7 +11,6 @@ class Table extends Component {
         order: ""
     };
 
-    // When the component mounts, get a list of all available base employees and update this.state.employees
     componentDidMount() {
         API.getEmployees()
             .then(res => this.setState({ results: res.data.results, search: "" }))
@@ -28,7 +27,7 @@ class Table extends Component {
         }
     };
 
-    sortFirst = () => {
+    sortByFirst = () => {
         const sortedEmp = this.state.results.sort((a, b) => {
             if (b.name.first > a.name.first) {
                 return -1
@@ -48,7 +47,7 @@ class Table extends Component {
         this.setState({ results: sortedEmp })
     }
 
-    sortLast = () => {
+    sortByLast = () => {
         const sortedEmp = this.state.results.sort((a, b) => {
             if (b.name.last > a.name.last) {
                 return -1
@@ -79,8 +78,8 @@ class Table extends Component {
                         <thead>
                             <tr>
                                 <th>Image</th>
-                                <th onClick={this.sortFirst} className="sortable">First Name</th>
-                                <th onClick={this.sortLast} className="sortable">Last Name</th>
+                                <th onClick={this.sortByFirst} className="sort-name">First Name</th>
+                                <th onClick={this.sortByLast} className="sort-name">Last Name</th>
                                 <th>Phone</th>
                                 <th>Email</th>
                                 <th>DOB </th>
@@ -97,7 +96,7 @@ class Table extends Component {
                                             <td >{item.name.last}</td>
                                             <td >{item.phone}</td>
                                             <td >{item.email}</td>
-                                            <td>{DateFormat(item.dob.date, "mediumDate")}</td>
+                                            <td>{moment(item.dob.date).format("L")}</td>
                                         </tr>
                                     </tbody>
 
@@ -111,7 +110,7 @@ class Table extends Component {
                                                 <td >{item.name.last}</td>
                                                 <td >{item.phone} </td>
                                                 <td >{item.email}</td>
-                                                <td>{DateFormat(item.dob.date, "mediumDate")}</td>
+                                                <td>{moment(item.dob.date).format("L")}</td>
                                             </tr>
                                         </tbody>
                                         :
