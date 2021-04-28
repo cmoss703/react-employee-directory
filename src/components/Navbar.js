@@ -7,10 +7,10 @@ const Navbar = (props) => {
 
   return (
     <div>
-      <div className="jumbotron jumbotron-fluid" id="jumbotron">
+      <div className="jumbotron jumbotron-fluid">
         <div className="container">
-          <h1 className="display-4"><b>Employee Directory</b></h1>
-          <p className="lead">Sort or search for an employee by name!</p>
+          <h1 className="display-3"><b>Employee Directory</b></h1>
+          <h2 className="lead">Sort or search for an employee by name</h2>
         </div>
       </div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">

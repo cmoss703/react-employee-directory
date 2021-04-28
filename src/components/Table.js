@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import Navbar from "./Navbar";
 import moment from 'moment';
+import "./styles.css";
 
 class Table extends Component {
 
@@ -74,7 +75,7 @@ class Table extends Component {
                     search={this.state.search} />
 
                 <div className="table-responsive">
-                    <table className="table table-striped table-resposive text-center table-hover">
+                    <table className="table table-striped table-resposive text-center">
                         <thead>
                             <tr>
                                 <th>Image</th>
@@ -86,31 +87,28 @@ class Table extends Component {
                             </tr>
                         </thead>
 
-                        { //First Name sort
-                            this.state.results && this.state.results.map(item =>
-                                item.name.first.toLowerCase().includes(this.state.search) ?
-                                    <tbody key={item.login.uuid}>
+                        {this.state.results && this.state.results.map(empl =>
+                                empl.name.first.toLowerCase().includes(this.state.search) ?
+                                    <tbody key={empl.login.uuid}>
                                         <tr>
-                                            <td ><img src={item.picture.thumbnail} className="rounded-circle" alt="thumbnail" /></td>
-                                            <td >{item.name.first}</td>
-                                            <td >{item.name.last}</td>
-                                            <td >{item.phone}</td>
-                                            <td >{item.email}</td>
-                                            <td>{moment(item.dob.date).format("L")}</td>
+                                            <td ><img src={empl.picture.thumbnail} alt="avatar"/></td>
+                                            <td >{empl.name.first}</td>
+                                            <td >{empl.name.last}</td>
+                                            <td >{empl.phone}</td>
+                                            <td >{empl.email}</td>
+                                            <td>{moment(empl.dob.date).format("L")}</td>
                                         </tr>
                                     </tbody>
-
                                     :
-                                    //Last Name sort
-                                    item.name.last.toLowerCase().includes(this.state.search) ?
-                                        <tbody key={item.login.uuid}>
+                                    empl.name.last.toLowerCase().includes(this.state.search) ?
+                                        <tbody key={empl.login.uuid}>
                                             <tr>
-                                                <td ><img src={item.picture.thumbnail} className="rounded-circle" alt="thumbnail" /></td>
-                                                <td >{item.name.first}</td>
-                                                <td >{item.name.last}</td>
-                                                <td >{item.phone} </td>
-                                                <td >{item.email}</td>
-                                                <td>{moment(item.dob.date).format("L")}</td>
+                                                <td ><img src={empl.picture.thumbnail} alt="avatar" /></td>
+                                                <td >{empl.name.first}</td>
+                                                <td >{empl.name.last}</td>
+                                                <td >{empl.phone} </td>
+                                                <td >{empl.email}</td>
+                                                <td>{moment(empl.dob.date).format("L")}</td>
                                             </tr>
                                         </tbody>
                                         :

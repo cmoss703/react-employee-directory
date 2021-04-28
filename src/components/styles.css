@@ -1,0 +1,13 @@
+.jumbotron {
+    height: 200px;
+    color: white;
+    background-color: #197731;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.sort-name {
+    cursor: pointer;
+}
